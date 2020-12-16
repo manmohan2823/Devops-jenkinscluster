@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: myweb-deployment
+spec:
+ replicas: 3
+ selector:
+  matchLabels:
+   env: web
+ template:
+  metadata:
+   name: myweb-pod
+   labels:
+    env: web
+  spec:
+   containers:
+   - name: myweb-con
+     image: mansh/phpweb:v1
+     imagePullPolicy: Always
